@@ -1,2 +1,4 @@
 /dataset/imagenet/val
 /lr-models/model_inception.pt
+/__pycache__
+/.idea

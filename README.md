@@ -59,17 +59,27 @@ The testing script automatically loads the checkpoint saved during training and 
 
 ## 🧠 Method Overview
 
-Deep neural networks process information layer by layer. Although adversarial perturbations are nearly imperceptible in the input space, their impact grows as the data propagates through deeper layers. This increasing discrepancy forms a measurable “disconnect” between early- and late-layer feature representations.
+<p align="center">
+<img src="figures/lr.png" alt="Layer Regression Method">
+</p>
 
-Layer Regression leverages this nonuniform impact:
+Deep Neural Networks (DNNs) process information sequentially. We hypothesize that adversarial perturbations, while imperceptible at the input, cause a "disconnect" that amplifies as features propagate through the network.
 
-1. **Early-layer features:** Extract feature vectors from shallow layers, where adversarial effects remain minimal.
-2. **Prediction:** A lightweight MLP predicts the corresponding deep-layer features expected for clean inputs.
-3. **Detection:**  
-   - Clean inputs → accurate deep‑feature predictions  
-   - Adversarial inputs → distorted deep features → high MSE → detection flag  
+**Layer Regression** exploits this nonuniform impact using the pipeline illustrated above:
 
-LR requires no modifications to the target model and does not require adversarial training.
+1. **Selection & Slicing:** We select a subset of early-to-mid layers (e.g., $a_{r1}, a_{r2}$) and apply slicing functions $s_i$ to extract the most informative feature segments.
+
+2. **Vector Construction:** These slices are concatenated to form a single input vector $v = [s_1(a_{r1}(x)), \dots, s_m(a_{rm}(x))]$.
+
+3. **Regression:** A lightweight model $m$ (MLP) is trained to map this vector $v$ to the target model's deep feature vector $a_{n-1}(x)$.
+
+4. **Detection:**
+
+   * **Training:** The model $m$ learns to minimize the error $\ell(m(v), a_{n-1}(x))$ on clean data.
+
+   * **Inference:** Adversarial attacks distort deep features $a_{n-1}(x)$ significantly more than early features $v$. This causes the prediction error $\ell$ to spike, allowing us to flag any input where $\ell > \text{threshold}$ as adversarial.
+
+LR requires no modification to the target model and no adversarial training.
 
 ---
 

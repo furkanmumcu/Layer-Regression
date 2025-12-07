@@ -1,4 +1,4 @@
-# Layer Regressin
+# Layer Regression
 
 [![Paper](https://img.shields.io/badge/Paper-TMLR_2025-b31b1b.svg)](https://openreview.net/forum?id=0CY5APFnFI)
 

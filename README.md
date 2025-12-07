@@ -6,6 +6,8 @@ Official implementation of the paper **"Universal and Efficient Detection of Adv
 
 Layer Regression (LR) is a lightweight defense method that detects adversarial attacks by monitoring the consistency between early-layer and deep-layer features.
 
+* 🆕 **Update (December 6, 2025):** Code updated with **Automatic LR Training**. You can now simply provide a `timm` model name to train an LR detector. The script automatically handles layer selection and slicing, removing the need for manual configuration.
+
 ---
 
 ## 🚀 Key Highlights
@@ -95,4 +97,4 @@ LR requires no modification to the target model and no adversarial training.
 
 ```
 
----
+

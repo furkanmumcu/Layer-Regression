@@ -38,7 +38,7 @@ The training script automatically analyzes the target model (such as ResNet, Inc
 Run:
 
 ```bash
-python train.py
+python lr_train.py
 ```
 
 A checkpoint named `lr_detector_{model_name}.pt` will be saved, containing both the model weights and the selected layer configuration.
@@ -50,7 +50,7 @@ A checkpoint named `lr_detector_{model_name}.pt` will be saved, containing both 
 To evaluate the detector against adversarial attacks, run:
 
 ```bash
-python test.py
+python lr_test.py
 ```
 
 The testing script restores the configuration used during training to ensure compatibility.

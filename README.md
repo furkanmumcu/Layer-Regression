@@ -33,7 +33,7 @@ pip install torch torchvision timm numpy
 
 ### **1. Training**
 
-The training script automatically analyzes the target model (such as ResNet, Inception, or ViT), selects appropriate layers using the method described in the paper, and trains the lightweight detector.
+The training script is fully compatible with the timm PyTorch model library. By simply setting the model_name parameter, you can target any supported architecture. The code automatically analyzes the target model (e.g., ResNet, Inception, or ViT), selects the optimal layers using the methodology described in the paper, and trains the lightweight detector without manual intervention.
 
 Run:
 
@@ -41,19 +41,19 @@ Run:
 python lr_train.py
 ```
 
-A checkpoint named `lr_detector_{model_name}.pt` will be saved, containing both the model weights and the selected layer configuration.
+A checkpoint named `lr_detector_{model_name}.pt` will be saved under `lr-models` directory, containing both the model weights and the selected layer configuration.
 
 ---
 
 ### **2. Testing**
 
-To evaluate the detector against adversarial attacks, run:
+To evaluate the detector against adversarial attacks (using 5 sample images by default), run:
 
 ```bash
 python lr_test.py
 ```
 
-The testing script restores the configuration used during training to ensure compatibility.
+The testing script automatically loads the checkpoint saved during training and restores the exact layer configuration used, ensuring complete compatibility for evaluation.
 
 ---
 

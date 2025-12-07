@@ -1,6 +1,6 @@
 # Layer Regressin
 
-[![Paper](https://img.shields.io/badge/Paper-TMLR_2025-b31b1b.svg)](https://openreview.net/forum?id=OCY5APFnFI)
+[![Paper](https://img.shields.io/badge/Paper-TMLR_2025-b31b1b.svg)](https://openreview.net/forum?id=0CY5APFnFI)
 
 Official implementation of the paper **"Universal and Efficient Detection of Adversarial Data through Nonuniform Impact on Network Layers"** (Transactions on Machine Learning Research, 2025).
 
